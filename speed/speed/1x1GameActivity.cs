@@ -106,6 +106,7 @@ namespace speed
                 TurnONRobotAsync();
                 VerificadorDeImpossibilidadeAsync();
             });
+            callDialog.SetCancelable(false);
             callDialog.SetNegativeButton("Cancel", delegate {
                 var intent = new Intent(this, typeof(ChoosePCReactionActivity));
 
@@ -137,6 +138,7 @@ namespace speed
                         if (NaoEpossivelPCColocar() && NaoEPossivelUserColocar() && this._status == PCGameStatus.Running && !questionando)
                         {
                             var callDialog = new AlertDialog.Builder(this);
+                            callDialog.SetCancelable(false);
                             callDialog.SetMessage("Neither you nor the pc can set cards on the field,\n new cards will be placed.");
                             questionando = true;
                             callDialog.SetNeutralButton("Ready!", delegate
@@ -483,6 +485,7 @@ namespace speed
                     {
                         this._status = PCGameStatus.PCFinished;
                         var callDialog = new AlertDialog.Builder(this);
+                        callDialog.SetCancelable(false);
                         callDialog.SetMessage("You Lost!! Noob!!");
                         callDialog.SetNeutralButton("OK, i know i am a loser..", delegate
                         {
@@ -510,6 +513,7 @@ namespace speed
 
                             StartActivity(intent);
                         });
+                        callDialog.SetCancelable(false);
                         callDialog.Show();
                     });
                 }
